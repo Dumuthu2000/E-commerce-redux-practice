@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { addToCart } from '../store/cartSlice';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import { addProducts } from '../store/productsSlice';
 
 const Product = () => {
     const [products, setProducts] = useState([]);
@@ -15,6 +16,8 @@ const Product = () => {
             try {
                 const response = await axios.get(`https://dummyjson.com/products`);
                 setProducts(response.data.products);
+                const productsData = {products: response.data.products}
+                dispatch(addProducts(productsData));
                 setLoading(false);
             } catch (error) {
                 console.log(error.message);
