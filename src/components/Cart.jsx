@@ -20,14 +20,14 @@ const Cart = () => {
                 gap: 10,
                 marginBottom: 10
             }}>
-                <li key={index}>{item.name}</li>
+                <li key={index}>{item.title}</li>
                 <button onClick={() => handleRemoveItem(index, item.price) }>Delete</button>
             </div>
         )
       })}
       <hr />
       <h2>TOTAL AMOUNT</h2>
-      <p>Rs: {total}</p>
+      <p>Rs: {parseFloat(total).toFixed(2)}</p>
     </div>
   )
 }
