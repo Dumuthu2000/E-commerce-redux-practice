@@ -1,14 +1,28 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeFromCart } from '../store/cartSlice';
 
 const Cart = () => {
     const { cart, total } = useSelector((state) => state.cart);
+    const dispatch = useDispatch();
+
+    const handleRemoveItem = (index, price) => {
+        dispatch(removeFromCart({index, price}));
+    }
   return (
     <div>
         <h2>CART DETAILS</h2>
       {cart.map((item, index) => {
         return (
-            <li key={index}>{item.name}</li>
+            <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 10,
+                marginBottom: 10
+            }}>
+                <li key={index}>{item.name}</li>
+                <button onClick={() => handleRemoveItem(index, item.price) }>Delete</button>
+            </div>
         )
       })}
       <hr />
