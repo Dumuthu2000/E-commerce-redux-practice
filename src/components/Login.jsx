@@ -1,8 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
 import { loggin } from "../store/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleLogin = () => {
         const userData = {
@@ -11,6 +13,7 @@ const Login = () => {
         };
 
         dispatch(loggin(userData));
+        navigate('/')
     }
   return (
     <div>
