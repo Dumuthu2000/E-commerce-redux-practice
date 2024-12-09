@@ -21,6 +21,7 @@ const cartSlice = createSlice({
         },
         removeFromCart: (state, action) => {
             state.cart = state.cart.filter((_, index) => index !== action.payload.index);
+            state.total = state.total - action.payload.price;
         }
     }
 });
