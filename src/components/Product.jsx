@@ -1,27 +1,33 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react'
 import { addToCart } from '../store/cartSlice';
-import { fetchProducts } from '../store/productsSlice';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
 
 const Product = () => {
-    const { products, status, error } = useSelector((state) => state.product);
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
+
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        if(status === 'idle'){
-            dispatch(fetchProducts());
-        }
-    }, [status, dispatch]);
+        const fetchProducts = async() => {
+            setLoading(true);
+            try {
+                const response = await axios.get(`https://dummyjson.com/products`);
+                setProducts(response.data.products);
+                setLoading(false);
+            } catch (error) {
+                console.log(error.message);
+                setLoading(false);
+            }
+        };
 
-    //render logic based on status
-    if(status === "loading"){
-        return (
+        fetchProducts();
+    }, []);
+
+    if(loading){
+        return(
             <div>Loading..............</div>
-        )
-    }
-    if(status === "failed"){
-        return (
-            <div>error: {error}.</div>
         )
     }
 
