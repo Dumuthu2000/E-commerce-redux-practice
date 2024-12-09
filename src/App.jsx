@@ -13,6 +13,7 @@ const App = () => {
     {!isLoggedIn ? <Login/> : 
       <>
         <Navbar/>
+        <hr />
         <Routes>
           <Route path='/' element={<Product/>}/>
           <Route path='/cart' element={<Cart/>}/>

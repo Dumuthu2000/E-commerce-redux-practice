@@ -1,4 +1,5 @@
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const { user } = useSelector((state) => state.auth);
@@ -10,9 +11,13 @@ const Navbar = () => {
         justifyContent:'space-evenly',
         alignItems: 'center'
         }}>
-        <h1>Test E commerce</h1>
+        <Link to={'/'}>
+            <h1>Test E commerce</h1>
+        </Link>
         <p>User: {user.username}</p>
-        <p>Cart: {cart.length}</p>
+        <Link to={'/cart'}>
+            <p>Cart: {cart.length}</p>
+        </Link>
       </div>
     </nav>
   )
