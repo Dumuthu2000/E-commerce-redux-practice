@@ -11,12 +11,12 @@ const userSlice = createSlice({
     reducers: {
         loggin: (state, action) => {
             state.isLoggedIn = true;
-            state.user = {...state.user, user: action.payload};
+            state.user = action.payload;
         },
 
         logout: (state, action) => {
             state.isLoggedIn = false;
-            state.user = {user: action.payload};
+            state.user = null;
         }
     }
 });
