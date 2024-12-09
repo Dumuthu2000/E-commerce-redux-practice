@@ -7,7 +7,7 @@ const Login = () => {
     const handleLogin = () => {
         const userData = {
             username: "Dumuthu",
-            email: "dumuthu@gmail.com"
+            email: "dumuthujayasinghe@gmail.com"
         };
 
         dispatch(loggin(userData));
