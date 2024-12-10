@@ -10,12 +10,12 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         addToCart: (state, action) => {
-            state.cart =  [...state.cart, action.payload];
-            state.total = state.total + action.payload.price;
+            state.cart.push(action.payload);
+            state.total += action.payload.price;
         },
         removeFromCart: (state, action) => {
             state.cart = state.cart.filter((_, index) => index !== action.payload.index);
-            state.total = state.total - action.payload.price;
+            state.total -= action.payload.price;
         }
     }
 });
