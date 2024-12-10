@@ -14,13 +14,13 @@ const Cart = () => {
         <h2>CART DETAILS</h2>
       {cart.map((item, index) => {
         return (
-            <div style={{
+            <div key={index} style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: 10,
                 marginBottom: 10
             }}>
-                <li key={index}>{item.title}</li>
+                <li>{item.title}</li>
                 <button onClick={() => handleRemoveItem(index, item.price) }>Delete</button>
             </div>
         )

@@ -10,14 +10,15 @@ const App = () => {
   const { isLoggedIn } = useSelector((state) => state.auth);
   return (
     <BrowserRouter>
-    {!isLoggedIn ? <Login/> : 
+    {!isLoggedIn ? 
+      <Login/> : 
       <>
         <Navbar/>
         <hr />
         <Routes>
           <Route path='/' element={<Product/>}/>
           <Route path='/cart' element={<Cart/>}/>
-      </Routes>
+        </Routes>
       </>
     }  
     </BrowserRouter>
